@@ -37,12 +37,12 @@
 		props.numItemsPerPage = ko.computed(function() { return props.numColsPerPage() * props.numRowsPerPage() });
 		props.numItemsBeforeViewport = ko.computed(function() { return Math.floor(props.scrollY() / props.itemHeight()) * props.numColsPerPage(); });
 
-		props.firstVisibleFilteredItemIndex = ko.computed(function() {
-//console.log('firstVisibleFilteredItemIndex: ', Math.max(props.numItemsBeforeViewport(), 0));
+		props.firstVisibleIndex = ko.computed(function() {
+//console.log('firstVisibleIndex: ', Math.max(props.numItemsBeforeViewport(), 0));
 			return Math.max(props.numItemsBeforeViewport(), 0);
 		});
-		props.lastVisibleFilteredItemIndex = ko.computed(function() {
-//console.log('lastVisibleFilteredItemIndex: ', props.numItemsBeforeViewport() + props.numItemsPerPage());
+		props.lastVisibleIndex = ko.computed(function() {
+//console.log('lastVisibleIndex: ', props.numItemsBeforeViewport() + props.numItemsPerPage());
 			return props.numItemsBeforeViewport() + props.numItemsPerPage();
 		});
 
@@ -50,7 +50,7 @@
 		props.displayItems = ko.observable([]);
 		ko.computed(function() {
 			var oldDisplayItems = props.displayItems.peek();
-			var newDisplayItems = target.slice(0, props.lastVisibleFilteredItemIndex() + props.numItemsPerPage() * 2);
+			var newDisplayItems = target.slice(0, props.lastVisibleIndex());
 
 			if (oldDisplayItems.length != newDisplayItems.length) {
 				props.displayItems(newDisplayItems);
