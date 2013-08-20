@@ -8,8 +8,8 @@
 		// AMD anonymous module with hard-coded dependency on "knockout"
 		define(["knockout", "exports"], factory);
 	} else {
-		// <script> tag: use the global `ko` object, attaching a `mapping` property
-		factory(ko, ko.mapping = {});
+		// <script> tag: use the global `ko` object
+		factory(ko, {});
 	}
 }(function (ko, exports) {
 	ko.extenders.infinitescroll = function(target, args) {
