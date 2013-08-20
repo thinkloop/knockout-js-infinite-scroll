@@ -12,7 +12,7 @@
 		factory(ko, ko.mapping = {});
 	}
 }(function (ko, exports) {
-	ko.extenders.infinitescroll = function(target) {
+	ko.extenders.infinitescroll = function(target, args) {
 		var props = {};
 
 		target.infinitescroll = props;
