@@ -60,7 +60,7 @@
 
 		// update display items, triggered by target(), lastVisibleIndex and numItemsPerPage
 		ko.computed(function() {
-			var oldDisplayItems = props.displayItems.peek().slice(0),
+			var oldDisplayItems = props.displayItems.peek(),
 				newDisplayItems = target.slice(0, props.lastHiddenIndex());
 
 			if (oldDisplayItems.length !== newDisplayItems.length) {
@@ -69,7 +69,7 @@
 			}
 
 			// if collections are not identical, skip, replace with new items
-			for (var i = oldDisplayItems.length - 1; i >= 0; i--) {
+			for (var i = newDisplayItems.length - 1; i >= 0; i--) {
 				if (newDisplayItems[i] !== oldDisplayItems[i]) {
 					props.displayItems(newDisplayItems);
 					return;
