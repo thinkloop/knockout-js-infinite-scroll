@@ -33,17 +33,28 @@
 		props.scrollYOffset = ko.observable(0);
 
 		// calculations
+		// calculations
 		props.numColsPerPage = ko.computed(function() {
-			return Math.max(Math.floor(props.viewportWidth() / props.itemWidth()), 0);
+			var viewportWidth = parseInt(props.viewportWidth()),
+				itemWidth = parseInt(props.itemWidth()) || -1;
+			return Math.max(Math.floor(viewportWidth / itemWidth), 0);
 		});
 		props.numRowsPerPage = ko.computed(function() {
-			return Math.max(Math.ceil(props.viewportHeight() / props.itemHeight()), 0);
+			var viewportHeight = parseInt(props.viewportHeight()),
+				itemHeight = parseInt(props.itemHeight()) || -1;
+			return Math.max(Math.ceil(viewportHeight / itemHeight), 0);
 		});
 		props.numItemsPerPage = ko.computed(function() {
-			return props.numColsPerPage() * props.numRowsPerPage()
+			var numColsPerPage = parseInt(props.numColsPerPage()),
+				numRowsPerPage = parseInt(props.numRowsPerPage());
+			return numColsPerPage * numRowsPerPage;
 		});
 		props.firstVisibleIndex = ko.computed(function() {
-			return Math.max(Math.floor((props.scrollY() - props.scrollYOffset()) / props.itemHeight()) * props.numColsPerPage(), 0);
+			var scrollY = parseInt(props.scrollY()),
+				scrollYOffset = parseInt(props.scrollYOffset()),
+				itemHeight = parseInt(props.itemHeight()) || -1,
+				numColsPerPage = props.numColsPerPage();
+			return Math.max(Math.floor((scrollY - scrollYOffset) / itemHeight) * numColsPerPage, 0);
 		});
 		props.lastVisibleIndex = ko.computed(function() {
 			return props.firstVisibleIndex() + props.numItemsPerPage();
