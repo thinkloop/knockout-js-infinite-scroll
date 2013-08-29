@@ -65,7 +65,7 @@
 			return Math.min(props.lastVisibleIndex() + props.numItemsPerPage() * props.numPagesPadding(), target().length);
 		});
 		props.heightBefore = ko.computed(function() {
-			return Math.max(((props.firstVisibleIndex() - props.numItemsPerPage() * props.numPagesPadding()) / props.numColsPerPage()) * props.itemHeight(), 0);
+			return Math.max(props.firstHiddenIndex() / props.numColsPerPage() * props.itemHeight(), 0);
 		});
 		props.heightAfter = ko.computed(function() {
 			return Math.max(((target().length - 1 - props.lastHiddenIndex()) / props.numColsPerPage()) * props.itemHeight(), 0);
