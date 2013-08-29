@@ -33,7 +33,6 @@
 		props.scrollYOffset = ko.observable(0);
 
 		// calculations
-		// calculations
 		props.numColsPerPage = ko.computed(function() {
 			var viewportWidth = parseInt(props.viewportWidth()),
 				itemWidth = parseInt(props.itemWidth()) || -1;
@@ -63,13 +62,17 @@
 			return Math.max(props.firstVisibleIndex() - props.numItemsPerPage() * props.numPagesPadding(), 0);
 		});
 		props.lastHiddenIndex = ko.computed(function() {
-			return props.lastVisibleIndex() + props.numItemsPerPage() * props.numPagesPadding();
+			return Math.min(props.lastVisibleIndex() + props.numItemsPerPage() * props.numPagesPadding(), target().length);
+		});
+		props.heightBefore = ko.computed(function() {
+			return Math.max(((props.firstVisibleIndex() - props.numItemsPerPage() * props.numPagesPadding()) / props.numColsPerPage()) * props.itemHeight(), 0);
+		});
+		props.heightAfter = ko.computed(function() {
+			return Math.max(((target().length - 1 - props.lastHiddenIndex()) / props.numColsPerPage()) * props.itemHeight(), 0);
 		});
 
 		// display items
 		props.displayItems = ko.observableArray([]);
-
-		// update display items, triggered by target(), lastVisibleIndex and numItemsPerPage
 		ko.computed(function() {
 			var oldDisplayItems = props.displayItems.peek(),
 				newDisplayItems = target.slice(0, props.lastHiddenIndex());
