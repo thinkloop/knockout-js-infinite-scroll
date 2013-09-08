@@ -48,6 +48,9 @@
 				numRowsPerPage = parseInt(props.numRowsPerPage());
 			return numColsPerPage * numRowsPerPage;
 		});
+		props.numItemsPadding = ko.computed(function() {
+			return Math.max(props.numItemsPerPage() * props.numPagesPadding(), props.numColsPerPage());
+		});
 		props.firstVisibleIndex = ko.computed(function() {
 			var scrollY = parseInt(props.scrollY()),
 				scrollYOffset = parseInt(props.scrollYOffset()),
@@ -59,10 +62,10 @@
 			return props.firstVisibleIndex() + props.numItemsPerPage();
 		});
 		props.firstHiddenIndex = ko.computed(function() {
-			return Math.max(props.firstVisibleIndex() - props.numItemsPerPage() * props.numPagesPadding(), 0);
+			return Math.max(props.firstVisibleIndex() - props.numItemsPadding(), 0);
 		});
 		props.lastHiddenIndex = ko.computed(function() {
-			return Math.min(props.lastVisibleIndex() + props.numItemsPerPage() * props.numPagesPadding(), target().length);
+			return Math.min(props.lastVisibleIndex() + props.numItemsPadding(), target().length);
 		});
 		props.heightBefore = ko.computed(function() {
 			return Math.max(props.firstHiddenIndex() / props.numColsPerPage() * props.itemHeight(), 0);
