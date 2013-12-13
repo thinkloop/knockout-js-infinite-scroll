@@ -8,7 +8,7 @@ This is a KnockoutJS extender that provides infinite scroll functionality to an 
 The example fiddle shows the simplest implmentation of this component, see the next section for important in-practice tips.
 
 ###Scale to Thousands of Items###
-There is an important technique that allows this to scale to many thousands of complex items. Say we were working with a Pinterest style layout, where items with heavy content are floated next to each other forever. When items scroll out of view, we can unload their expensive contents (images, comments, styling, etc.), while keeping the top-level containers to maintain the document structure:
+There is an important technique that allows this to scale to many thousands of complex items. Say we were working with a Pinterest style layout, where items with heavy content are floated next to each other forever. When items scroll out of view, we can unload their expensive contents (images, comments, styling, etc.), while keeping the top-level containers to maintain document structure:
 
 ```html
 <!-- ko foreach: filteredItems.infinitescroll.displayItems -->
