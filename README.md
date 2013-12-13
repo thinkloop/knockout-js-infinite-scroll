@@ -20,5 +20,5 @@ There is an important technique that allows this to scale to many thousands of c
 <!-- /ko -->
 ````
 
-We compare $index to firstVisibleIndex and only render the contents of items that are actually visible on screen. This way users can scroll through many thousands of items, since the majority will be empty, super-light containers. 
+We compare $index to firstVisibleIndex and only render the contents of items that are actually visible on screen. This way users can scroll through many thousands of items without any performance/memory issues, since the majority of the containers will be empty and light-weight. 
 ```
