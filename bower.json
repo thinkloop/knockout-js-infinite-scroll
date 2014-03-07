@@ -1,0 +1,12 @@
+{
+  "name": "knockout-js-infinite-scroll",
+  "version": "0.1.0",
+  "main": "infinitescroll.js",
+  "ignore": [
+    ".gitignore",
+    "README.md"
+  ],
+  "dependencies": {
+    "knockout.js": "~3.0.0"
+  }
+}
