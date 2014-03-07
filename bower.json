@@ -1,12 +1,31 @@
 {
   "name": "knockout-js-infinite-scroll",
   "version": "0.1.0",
-  "main": "infinitescroll.js",
-  "ignore": [
-    ".gitignore",
-    "README.md"
+  "authors": [
+    "Baz <bk@thinkloop.com>"
   ],
+  "license": "MIT",
+  "description": "Knockout JS (KO) extender that provides infinite scroll functionality to an observable array by automatically filtering it down to only the items visible on screen.",
+  "homepage": "https://github.com/thinkloop/knockout-js-infinite-scroll",
+  "keywords": [
+    "knockout",
+    "ko",
+    "infinite",
+    "scroll"
+  ],
+
+  "main": "infinitescroll.js",
   "dependencies": {
     "knockout.js": "~3.0.0"
-  }
+  },
+
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    "README.md"
+  ]
 }
