@@ -16,7 +16,7 @@
   "version": "0.1.0",
   "main": "infinitescroll.js",
   "dependencies": {
-    "knockout.js": "~3.0.0"
+    "knockout": "~3.0.0"
   },
 
   "ignore": [
