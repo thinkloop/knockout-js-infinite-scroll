@@ -106,6 +106,15 @@ describe('InfiniteScroll - scrolled, no page-padding - ', function() {
     expect(target.items.infinitescroll.displayItems()[5]).to.equal('item6');
     expect(target.items.infinitescroll.displayItems()).to.have.length(6);
   });
+  it('should have last-visible-index on the last visible item', function() {
+    var firstVisibleRow = 1;
+    target.items.infinitescroll.scrollY(firstVisibleRow*itemDim);
+    // no page padding, item3, item4 are first visible row, and item5, item6 last visible => last visible index 5
+    expect(target.items.infinitescroll.lastVisibleIndex()).to.equal(5)
+    target.items.infinitescroll.scrollY(firstVisibleRow*itemDim + 0.1*itemDim);
+    // now row item7,item8 is partially visible => last visible index 7
+    expect(target.items.infinitescroll.lastVisibleIndex()).to.equal(7)
+  })
 });
 
 

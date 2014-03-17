@@ -63,7 +63,11 @@
 			return Math.max(Math.floor((scrollY - scrollYOffset) / itemHeight) * numColsPerPage, 0);
 		});
 		props.lastVisibleIndex = ko.computed(function() {
-			return props.firstVisibleIndex() + props.numItemsPerPage() - 1;
+			var scrollY = parseInt(props.scrollY()),
+				scrollYOffset = parseInt(props.scrollYOffset()),
+				itemHeight = parseInt(props.itemHeight()) || -1,
+				numColsPerPage = props.numColsPerPage();
+			return Math.max(Math.ceil((scrollY - scrollYOffset) / itemHeight) * numColsPerPage, 0) + props.numItemsPerPage() - 1;
 		});
 		props.firstHiddenIndex = ko.computed(function() {
 			return Math.max(props.firstVisibleIndex() - 1 - props.numItemsPadding(), 0);
