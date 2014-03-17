@@ -1,6 +1,7 @@
 ﻿(function (factory) {
 	// Module systems magic dance.
 
+    /* istanbul ignore next - (code coverage ignore) */
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object") {
 		// CommonJS or Node: hard-coded dependency on "knockout"
 		factory(require("knockout"), exports);
@@ -62,13 +63,17 @@
 			return Math.max(Math.floor((scrollY - scrollYOffset) / itemHeight) * numColsPerPage, 0);
 		});
 		props.lastVisibleIndex = ko.computed(function() {
-			return props.firstVisibleIndex() + props.numItemsPerPage();
+			var scrollY = parseInt(props.scrollY()),
+				scrollYOffset = parseInt(props.scrollYOffset()),
+				itemHeight = parseInt(props.itemHeight()) || -1,
+				numColsPerPage = props.numColsPerPage();
+			return Math.max(Math.ceil((scrollY - scrollYOffset) / itemHeight) * numColsPerPage, 0) + props.numItemsPerPage() - 1;
 		});
 		props.firstHiddenIndex = ko.computed(function() {
-			return Math.max(props.firstVisibleIndex() - props.numItemsPadding(), 0);
+			return Math.max(props.firstVisibleIndex() - 1 - props.numItemsPadding(), 0);
 		});
 		props.lastHiddenIndex = ko.computed(function() {
-			return Math.min(props.lastVisibleIndex() + props.numItemsPadding(), target().length);
+			return Math.min(props.lastVisibleIndex() + 1 + props.numItemsPadding(), target().length);
 		});
 		props.heightBefore = ko.computed(function() {
 			return Math.max(props.firstHiddenIndex() / props.numColsPerPage() * props.itemHeight(), 0);
