@@ -29,7 +29,11 @@ describe('Infinitescroll - not scrolled, no page-padding -', function() {
     target = new ViewModel();
     target.items.infinitescroll.numPagesPadding(0);
     itemDim = 10;
-    target.items(['item1', 'item2', 'item3', 'item4', 'item5']);
+    target.items(['item1', 'item2',
+                  'item3', 'item4',
+                  'item5', 'item6',
+                  'item7', 'item8',
+                  'item9', 'item10']);
     setItemSize(target, {height: itemDim, width: itemDim});
   });
   it('should display no items initially', function() {
@@ -39,25 +43,29 @@ describe('Infinitescroll - not scrolled, no page-padding -', function() {
     setViewport(target, {height: 1*itemDim, width: 1*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(1);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(1);
-    expect(target.items.infinitescroll.displayItems()).to.have.length(1);
+    expect(target.items.infinitescroll.numItemsPadding()).to.equal(1);
+    expect(target.items.infinitescroll.displayItems()).to.have.length(1 + target.items.infinitescroll.numItemsPadding());
   });
   it('should display 2 items when grid is 2x1', function() {
     setViewport(target, {height: 2*itemDim, width: 1*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(2);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(1);
-    expect(target.items.infinitescroll.displayItems()).to.have.length(2);
+    expect(target.items.infinitescroll.numItemsPadding()).to.equal(1);
+    expect(target.items.infinitescroll.displayItems()).to.have.length(2 + target.items.infinitescroll.numItemsPadding());
   });
   it('should display 2 items when grid is 1x2', function() {
     setViewport(target, {height: 1*itemDim, width: 2*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(1);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(2);
-    expect(target.items.infinitescroll.displayItems()).to.have.length(2);
+    expect(target.items.infinitescroll.numItemsPadding()).to.equal(2);
+    expect(target.items.infinitescroll.displayItems()).to.have.length(2 + target.items.infinitescroll.numItemsPadding());
   });
   it('should display 4 items when grid is 2x2', function() {
     setViewport(target, {height: 2*itemDim, width: 2*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(2);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(2);
-    expect(target.items.infinitescroll.displayItems()).to.have.length(4);
+    expect(target.items.infinitescroll.numItemsPadding()).to.equal(2);
+    expect(target.items.infinitescroll.displayItems()).to.have.length(4 + target.items.infinitescroll.numItemsPadding());
   });
   it('should display 3 items when grid is 2x2 and only exist 3 items', function() {
     setViewport(target, {height: 2*itemDim, width: 2*itemDim});
@@ -70,7 +78,6 @@ describe('Infinitescroll - not scrolled, no page-padding -', function() {
     setViewport(target, {height: 2*itemDim, width: 2*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(2);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(2);
-    expect(target.items.infinitescroll.displayItems()).to.have.length(4);
     target.items()[1] = 'newItem2';
     target.items.valueHasMutated();
     expect(target.items.infinitescroll.displayItems()[1]).to.equal('newItem2');
@@ -92,7 +99,7 @@ describe('InfiniteScroll - scrolled, no page-padding - ', function() {
     setViewport(target, {height: 2*itemDim, width: 2*itemDim});
     expect(target.items.infinitescroll.numRowsPerPage()).to.equal(2);
     expect(target.items.infinitescroll.numColsPerPage()).to.equal(2);
-    expect(target.items.infinitescroll.numItemsPadding()).to.equal(0);
+    expect(target.items.infinitescroll.numItemsPadding()).to.equal(target.items.infinitescroll.numColsPerPage());
   });
   it('should keep items above, when scroll beyond them', function() {
     var firstVisibleRow = 3;
@@ -104,7 +111,7 @@ describe('InfiniteScroll - scrolled, no page-padding - ', function() {
     target.items.infinitescroll.scrollY(firstVisibleRow*itemDim);
     expect(target.items.infinitescroll.displayItems()[0]).to.equal('item1');
     expect(target.items.infinitescroll.displayItems()[5]).to.equal('item6');
-    expect(target.items.infinitescroll.displayItems()).to.have.length(6);
+    expect(target.items.infinitescroll.displayItems()).to.have.length(6 + target.items.infinitescroll.numItemsPadding());
   });
   it('should have last-visible-index on the last visible item', function() {
     var firstVisibleRow = 1;

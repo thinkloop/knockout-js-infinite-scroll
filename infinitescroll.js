@@ -53,7 +53,7 @@
 			var numItemsPerPage = props.numItemsPerPage(),
 				numPagesPadding = props.numPagesPadding(),
 				numColsPerPage = props.numColsPerPage();
-			return Math.max(Math.floor(numItemsPerPage * numPagesPadding / numColsPerPage) * numColsPerPage, 0);
+			return Math.max(Math.floor(numItemsPerPage * numPagesPadding / numColsPerPage) * numColsPerPage, numColsPerPage);
 		});
 		props.firstVisibleIndex = ko.computed(function() {
 			var scrollY = parseInt(props.scrollY()),
