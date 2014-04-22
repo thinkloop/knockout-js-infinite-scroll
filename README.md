@@ -22,5 +22,4 @@ There is an important technique that allows this to scale to many thousands of c
 
 We compare $index to firstVisibleIndex and only render the contents of items that are actually visible on screen. This way users can scroll through many thousands of items without any performance issues, since the majority of the containers will be empty and light-weight.
 
-###Don't hesitate to ask questions in issues!###
-(or star the repo if you like it!)
+###Don't hesitate to ask questions in issues or star the repo if you like it!###
