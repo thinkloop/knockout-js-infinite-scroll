@@ -13,8 +13,9 @@
     "scroll"
   ],
   "version": "0.1.0",
-  "main": "infinitescroll.js",
+  "main": "knockout-js-infinite-scroll.js",
   "dependencies": {
+  	"knockout": "~3.2.0"
   },
   "devDependencies": {
     "mocha": "~1.18",
