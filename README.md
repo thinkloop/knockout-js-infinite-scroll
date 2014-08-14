@@ -25,7 +25,7 @@ There is an important technique that allows this to scale to many thousands of c
 
 We compare $index to firstVisibleIndex and only render the contents of items that are actually visible on screen. This way users can scroll through many thousands of items without any performance issues, since the majority of the containers will be empty and light-weight.
 
-###Run tests:
+###Run tests
 
 Install dependencies:
 - install [node.js](nodejs.org)
@@ -37,8 +37,8 @@ Run tests: `npm test`
 
 coverage report in html is in *coverage/*
 
-###Bower:
+###Bower
 
-Note, is compatible with at least knockout 3.0.0. Cannot be specified in the bower.json as dependency right now as no official proper package of knockout exists. FYI: [knockout - issue1039](https://github.com/knockout/knockout/issues/1039#issuecomment-31376866)
+`bower install git://github.com/thinkloop/knockout-js-infinite-scroll.git`
 
 #####Don't hesitate to ask questions in issues or star the repo if you like it!###
