@@ -1,7 +1,7 @@
 Knockout JS (KO) Infinite Scroll
 ===========================
 
-[![Build Status](https://travis-ci.org/julienaubert/knockout-js-infinite-scroll.png?branch=add_tests)](https://travis-ci.org/julienaubert/knockout-js-infinite-scroll)
+[![Build Status](https://travis-ci.org/thinkloop/knockout-js-infinite-scroll.svg?branch=master)](https://travis-ci.org/thinkloop/knockout-js-infinite-scroll.svg?branch=master)
 
 
 This is a KnockoutJS extender that provides infinite scroll functionality to an observable array by automatically filtering it down to only the items visible on screen. It was developed to display and scroll various long lists of complex items on [OppositeofOpposite.com](http://www.oppositeofopposite.com/), such as the main items list, the friends list and the categories list.
