@@ -1,0 +1,14 @@
+{
+  "name": "knockout-js-infinite-scroll",
+  "version": "0.1.0",
+  "devDependencies": {
+    "karma-coffee-preprocessor": "~0.1",
+    "karma-mocha": "0.1.1",
+    "karma-coverage": "karma-runner/karma-coverage#a35d8d068ef",
+    "karma": "0.10.9",
+    "karma-coveralls": "~0.1.4"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start karma.conf.js"
+  }
+}

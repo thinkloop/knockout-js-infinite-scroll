@@ -12,13 +12,17 @@
     "infinite",
     "scroll"
   ],
-
   "version": "0.1.0",
   "main": "infinitescroll.js",
   "dependencies": {
-    "knockout": "~3.0.0"
   },
-
+  "devDependencies": {
+    "mocha": "~1.18",
+    "chai": "~1.9",
+    "sinon": "1.8.2",
+    "sinon-chai": "2.5.0",
+    "commonjs-require-definition": "~0.1.2"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
