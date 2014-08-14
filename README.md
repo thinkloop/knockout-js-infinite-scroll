@@ -42,4 +42,6 @@ Run tests: `npm test`
 
 coverage report in html is in *coverage/*
 
+---
+
 #####Don't hesitate to ask questions in issues, or star the repo if you like it!###
