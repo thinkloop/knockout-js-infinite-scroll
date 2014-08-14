@@ -41,4 +41,4 @@ coverage report in html is in *coverage/*
 
 `bower install git://github.com/thinkloop/knockout-js-infinite-scroll.git`
 
-#####Don't hesitate to ask questions in issues or star the repo if you like it!###
+#####Don't hesitate to ask questions in issues, or star the repo if you like it!###
